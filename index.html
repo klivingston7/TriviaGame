@@ -17,19 +17,19 @@
 </head>
 
 <body>
-
-<div class="content">
+<div class="container">
    <div class="container-fluid">	
-     <nav class="row">
+     <nav class="row"> 
 		<div class="title col-md-12">
-			<h1>Sports Trivia! </h1>
-		 </div>
+			<h1>Sports Trivia</h1>
+         </div>
 	 </nav>
     <div class="row">
         <div class="time col-md-12">
           </div>
-
-     <div class="question-wrapper col-md-12">
+    </div>    
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which is the only country to have played in each and every World Cup?
         </div>	
@@ -43,14 +43,14 @@
             </ul>
         </div>
     
-        <div class="picture hide col-md-12 ">
+        <div class="picture hide col-md-12">
             <h4>You're Correct, it's Brazil!</h4>
             <img src="./assets/images/brazil.png" width="200px">
-
         </div>
+     </div>
     </div>
-
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which is the only American Football team to go a whole season undefeated, including the Super Bowl?
         </div>	
@@ -67,9 +67,11 @@
             <h4>You're Correct, it's the Miami Dolphins!</h4>
             <img src="./assets/images/MiamiDolphins.png" width="200px">
         </div>	
+       </div>
     </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which is the only NBA player to win 11 championships in their career as a player?
         </div>	
@@ -86,9 +88,11 @@
             <h4>You're Correct, it's Bill Russell!</h4>
             <img src="./assets/images/Bill_Russell.jpg" width="200px">
         </div>	
+       </div>
     </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which golf tournament did Tiger Woods win by 12 strokes in 1997 to record his first major championship win?    
         </div>	
@@ -106,9 +110,11 @@
             <img src="./assets/images/TheMasters.jpg" width="200px">
 
         </div>
+       </div>
     </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which is the player to ever hit an MLB home run and score an NFL touchdown in the same week?    
         </div>	
@@ -125,9 +131,11 @@
             <h4>You're Correct, it's Deion Sanders!</h4>
             <img src="./assets/images/DeionSanders.jpg" width="200px">
         </div>	
-     </div>
+       </div>
+    </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             The very first Wimbledon tournament was scheduled in 1877 as a fundraiser for which sport?
         </div>	
@@ -144,9 +152,11 @@
             <h4>You're Correct, it's Croquet!</h4>
             <img src="./assets/images/croquet.jpg" width="200px">
         </div>	
-     </div>
+       </div>
+    </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which sport are the movies The Natural and Moneyball about?    
         </div>	
@@ -163,9 +173,11 @@
             <h4>You're Correct, it's Baseball!</h4>
             <img src="./assets/images/baseball.jpeg" width="200px">
         </div>	
+       </div>
     </div>
 
-    <div class="question-wrapper col-md-12">
+    <div class="row">
+      <div class="question-wrapper col-md-12">
         <div class="question col-md-12">
             Which boxer is known as the Godfather of boxing?
         </div>	
@@ -183,17 +195,26 @@
             <h4>You're Correct, it's Muhammad Ali!</h4>
             <img src="./assets/images/MuhammadAli.jpg" width="200px">
         </div>	
+       </div>
     </div>
 
-    <div class="tally hide col-md-12">
-        <h3>You're Done!</h3>
-        <h3>Total Right: <span class="total-right"></span></h3>
-        <h3>Total Wrong: <span class="total-wrong"></span></h3>
-        <h3>Total Unanswered: <span class="total-unanswered"></span></h3>
-    </div>
-
+    <div class="row">
+        <div class="tally hide col-md-12">
+            <button class="btn" onclick="document.location.reload()">You're Done! Try Again?'</button>
+            <h3>Total Right: <span class="total-right"></span></h3>
+            <h3>Total Wrong: <span class="total-wrong"></span></h3>
+            <h3>Total Unanswered: <span class="total-unanswered"></span></h3>
+        </div>
+     </div> 
+     
   </div>
 </div>
+
+<footer class="fixed-bottom">
+    <div class="container footer mx-auto d-block">
+          <div>Kitt Livingston  |  Copyright ©</div>
+    </div>
+ </footer>
 
 </body>
 <!-- Linking Personal JS -->

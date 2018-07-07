@@ -11,7 +11,7 @@ var totalRight = 0
 var totalWrong = 0
 
 var showQuestion = function() {
-  
+
   $.each(questionWrappers, function(key, value){
     $(value).removeClass("active")
     $(image).addClass("hide")
@@ -27,10 +27,8 @@ var showQuestion = function() {
   }
 }
 
-showQuestion();
-
 var updateTotals = function() {
-  $(score).addClass("hide")	
+  $(score).addClass("hide")
   $(".total-right").text(totalRight)
   $(".total-wrong").text(totalWrong)
   $(".total-unanswered").text(questionWrappers.length - totalRight - totalWrong)
@@ -45,16 +43,18 @@ $("li").click(function() {
     $(image[i]).addClass("active");
     $(this).parents(".question-wrapper").find(".picture").slideDown()
     totalRight += 1
-    setTimeout(function() {showQuestion()}, 3000)
+    setTimeout(function() {showQuestion()}, 2500)
     
   } else {
     console.log("false")
     $(this).addClass("red")
     $(this).parents(".question-wrapper").append("<h3>Sorry the correct answer was " + answers[i-1] + "!</h3>")
     totalWrong += 1
-    setTimeout(function() {showQuestion()}, 3000)
+    setTimeout(function() {showQuestion()}, 2500)
   }
 
   updateTotals();
 
 })
+
+showQuestion();
