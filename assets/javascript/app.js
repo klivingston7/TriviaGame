@@ -1,71 +1,60 @@
-// Trivia Content String Variables
 
-var questions = {
-	"q1" : "Which is the only country to have played in each and every World Cup?",
-	"q2" : "Which is the only American Football team to go a whole season undefeated, including the Super Bowl?",
-	"q3" : "Which is the only NBA player to win 11 championships in their career as a player?",
-	"q4" : "Which golf tournament did Tiger Woods win by 12 strokes in 1997 to record his first major championship win?",
-	"q5" : "Which is the player to ever hit an MLB home run and score an NFL touchdown in the same week?",
-    "q6" : "The very first Wimbledon tournament was scheduled in 1877 as a fundraiser for which sport?",
-    "q7" : "Which sport are the movies The Natural and Moneyball about?",
-    "q8" : "Which boxer is known as the Godfather of boxing?",
+var answers = ["Brazil", "Miami Dolphins", "Bill Russell", "The Masters", "Deion Sanders", "Croquet", "Baseball", "Muhammad Ali"]
+
+var questionWrappers = $(".question-wrapper")
+var image = $(".picture")
+var score = $(".tally")
+
+var i = 0
+
+var totalRight = 0
+var totalWrong = 0
+
+var showQuestion = function() {
+  
+  $.each(questionWrappers, function(key, value){
+    $(value).removeClass("active")
+    $(image).addClass("hide")
+    $(score).addClass("hide")		
+  });
+
+  $(questionWrappers[i]).addClass("active");
+
+  i += 1
+
+  if ((i - 1) == questionWrappers.length) {
+    $('.tally').show();
+  }
 }
 
-var answers = {
-    "q1" : ["England", "Argentina", "Brazil", "Germany"],
-	"q2" : ["Dallas Cowboys", "Miami Dolphins", "New England Patriots", "Green Bay Packers"],
-	"q3" : ["Frank Ramsey", "Magic Johnson", "Michael Jordan", "Bill Russell"],
-	"q4" : ["The Masters", "The Open Championship", "The US Open", "PGA Championship"],
-	"q5" : ["Jim Thorpe", "Deion Sanders", "Bo Jackson", "Ace Parker"],
-    "q6" : ["Croquet", "Golf", "Soccer", "Cricket"],
-    "q7" : ["Football", "Baseball", "Soccer", "Basketball"],
-    "q8" : ["Sugar Ray Leonard", "Mike Tyson", "Oscar De La Hoya", "Muhammad Ali"],
+showQuestion();
+
+var updateTotals = function() {
+  $(score).addClass("hide")	
+  $(".total-right").text(totalRight)
+  $(".total-wrong").text(totalWrong)
+  $(".total-unanswered").text(questionWrappers.length - totalRight - totalWrong)
 }
 
-var correctAnswers = {
-	"q1" : "Brazil",
-	"q2" : "Miami Dolphins",
-	"q3" : "Bill Russell",
-	"q4" : "The Masters",
-	"q5" : "Deion Sanders",
-    "q6" : "Croquet",
-    "q7" : "Baseball",
-    "q8" : "Muhammad Ali",
-}
+$("li").click(function() {
+  $("li").removeClass("green");
+  $("li").removeClass("red");
+  if ($.inArray($(this).text(), answers) > -1) {
+    console.log("true")
+    $(this).addClass("green")
+    $(image[i]).addClass("active");
+    $(this).parents(".question-wrapper").find(".picture").slideDown()
+    totalRight += 1
+    setTimeout(function() {showQuestion()}, 3000)
+    
+  } else {
+    console.log("false")
+    $(this).addClass("red")
+    $(this).parents(".question-wrapper").append("<h3>Sorry the correct answer was " + answers[i-1] + "!</h3>")
+    totalWrong += 1
+    setTimeout(function() {showQuestion()}, 3000)
+  }
 
-var images = {
-	"q1" : "./assets/images/brazil.png",
-	"q2" : "./assets/images/MiamiDolphins.png",
-	"q3" : "./assets/images/Bill_Russell.jpg",
-	"q4" : "./assets/images/TheMasters.jpg",
-	"q5" : "./assets/images/DeionSanders.jpg",
-    "q6" : "./assets/images/croquet.jpg",
-    "q7" : "./assets/images/baseball.jpeg",
-    "q8" : "./assets/images/MuhammadAli.jpg",
-}
+  updateTotals();
 
-// Additional Variables
-
-var timeRemaining = 20;
-var intervalId = "";
-var currentQuestion = 1;
-var correct = 0;
-var incorrect = 0;
-var unanswered = 0;
-
-
-// Function to clear content (for restart) + create button to start.
-
-function start () {
-    $("#content").empty();
-    var startBtn = $("<button>");
-    startBtn.text("Start");
-    startBtn.addClass("btn btn-primary start");
-    $("#content").append(startBtn);
-};
-
-function decrement() {
-    intervalId = setInterval(decrement, 1000);
-    timeRemaining--;
-    $("#time").html("Time Remaining: " + time + " Seconds");
-  };
+})
